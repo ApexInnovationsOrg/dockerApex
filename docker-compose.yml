@@ -9,8 +9,9 @@ services:
       container_name: apexinnovations-webserver
       working_dir: /application
       volumes:
-          - c:/xampp/htdocs:/application
+          - ../website:/application
           - ./phpdocker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+          - ./ssl:/ssl/
       ports:
        - "80:80"
 
@@ -19,6 +20,6 @@ services:
       container_name: apexinnovations-php-fpm
       working_dir: /application
       volumes:
-        - c:/xampp/htdocs:/application
+        - ../website:/application
         # - ./phpdocker/php-fpm/:etc/php-fpm.d/
 
