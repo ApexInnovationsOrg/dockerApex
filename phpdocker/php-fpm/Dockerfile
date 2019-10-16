@@ -15,4 +15,7 @@ RUN apt-get update && apt-get install -y \
     && echo 'redis' >> /usr/src/php-available-exts \
     && docker-php-ext-install redis
 
+ENV TZ=America/Chicago
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 COPY php-ini-overrides.conf /usr/local/etc/php-fpm.d/
+RUN printf '[PHP]\ndate.timezone = "America/Chicago"\n' > /usr/local/etc/php/conf.d/tzone.ini

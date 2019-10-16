@@ -23,4 +23,11 @@ services:
       volumes:
         - ../website:/application
         # - ./phpdocker/php-fpm/:etc/php-fpm.d/
+    composer_installation:
+      container_name: composer_installation
+      image: composer
+      working_dir: /application
+      volumes:
+        - ../website/classes:/application
+      command: composer install --ignore-platform-reqs
 
