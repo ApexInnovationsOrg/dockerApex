@@ -29,6 +29,6 @@ services:
       image: composer
       working_dir: /application/
       volumes:
-        - ../website/classes:/application/
-      command: composer install --ignore-platform-reqs
+        - ../website:/application/
+      command: composer update
 
