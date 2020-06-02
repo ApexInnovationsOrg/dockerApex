@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install -y \
         libmagickwand-dev --no-install-recommends \
 		ghostscript\
 		libxslt-dev\
+		libxml2-dev\
     && pecl install imagick \
     && docker-php-ext-install -j$(nproc) iconv \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
@@ -19,7 +20,8 @@ RUN apt-get update && apt-get install -y \
     && echo 'redis' >> /usr/src/php-available-exts \
     && docker-php-ext-install redis \
     && docker-php-ext-install zip \
-    && docker-php-ext-install xsl 
+    && docker-php-ext-install xsl \
+    && docker-php-ext-install soap  
 
 ENV TZ=America/Chicago
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
