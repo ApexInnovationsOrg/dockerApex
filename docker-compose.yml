@@ -9,7 +9,7 @@ services:
       container_name: apexinnovations-webserver
       working_dir: /application/
       volumes:
-          - ../website:/application/
+          - ../website_root:/application/
           - ./phpdocker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
           - ./ssl:/ssl/
       ports:
@@ -27,7 +27,7 @@ services:
       container_name: apexinnovations-php-fpm
       working_dir: /application/
       volumes:
-        - ../website:/application/
+        - ../website_root:/application/
         - ./phpdocker/php-fpm/apex-php.ini:/usr/local/etc/php/conf.d/apex-php.ini
         # - ./phpdocker/php-fpm/:etc/php-fpm.d/
     composer_installation:
@@ -35,6 +35,6 @@ services:
       image: composer
       working_dir: /application/
       volumes:
-        - ../website:/application/
+        - ../website_root:/application/
       command: composer update
 
