@@ -15,7 +15,13 @@ services:
       ports:
        - "80:80"
        - "443:443"
-
+    redis:
+      image: redis:bullseye
+      container_name: apexinnovations-redis
+      ports:
+        - "6379:6379"
+      volumes:
+        - ./phpdocker/redis/data:/data
     php-fpm:
       build: phpdocker/php-fpm
       container_name: apexinnovations-php-fpm
