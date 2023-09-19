@@ -1,3 +1,4 @@
 *.crt
 ssl/*
 .env
+phpdocker/redis/data/dump.rdb
