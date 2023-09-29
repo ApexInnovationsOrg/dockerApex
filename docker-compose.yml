@@ -22,6 +22,12 @@ services:
         - "6379:6379"
       volumes:
         - ./phpdocker/redis/data:/data
+      env_file:
+        - ../website_root/.env
+      command: 
+        - /bin/bash
+        - -c
+        - redis-server --requirepass $${REDIS_AUTH}
     php-fpm:
       build: phpdocker/php-fpm
       container_name: apexinnovations-php-fpm
