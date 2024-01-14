@@ -28,6 +28,12 @@ services:
         - /bin/bash
         - -c
         - redis-server --requirepass $${REDIS_AUTH}
+    mailhog:
+      image: mailhog/mailhog
+      container_name: 'mailhog'
+      ports:
+        - "1025:1025"
+        - "8025:8025"
     php-fpm:
       build: phpdocker/php-fpm
       container_name: apexinnovations-php-fpm
