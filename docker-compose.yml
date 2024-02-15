@@ -38,6 +38,8 @@ services:
       build: phpdocker/php-fpm
       container_name: apexinnovations-php-fpm
       working_dir: /application/
+      env_file:
+       - ../website_root/.env
       volumes:
         - ../website_root:/application/
         - ./phpdocker/php-fpm/apex-php.ini:/usr/local/etc/php/conf.d/apex-php.ini
